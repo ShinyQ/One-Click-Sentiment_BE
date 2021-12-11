@@ -3,5 +3,7 @@ numpy
 matplotlib
 PySastrawi
 regex
-tensorflow
 keras
+fastapi
+uvicorn
+pydantic

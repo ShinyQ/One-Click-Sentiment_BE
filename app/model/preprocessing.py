@@ -3,8 +3,8 @@ import string
 import pandas as pd
 
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
 
 BAKU = pd.read_csv("app/dataset/Kamu-Alay.csv")
 BAKU = BAKU.set_index("kataAlay")["kataBaik"].to_dict()
