@@ -3,7 +3,6 @@ import string
 import pandas as pd
 
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 
 BAKU = pd.read_csv("app/dataset/Kamu-Alay.csv")
@@ -69,12 +68,9 @@ def preprocessing_data(text):
     return text
 
 
-def convert_input_to_sequences(text, max_length, model):
+def convert_input_to_sequences(text, max_length, model, tokenizer):
     text = preprocessing_data(text)
-    tokenizer = Tokenizer(num_words=10000, oov_token="<OOV>")
-    tokenizer.fit_on_texts([text])
-
-    sequence = tokenizer.texts_to_sequences(text)
+    sequence = tokenizer.texts_to_sequences([text])
     sequence_pad = pad_sequences(sequence, maxlen=max_length, padding="post")
 
     return text, (model.predict(sequence_pad))
